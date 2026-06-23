@@ -1,9 +1,9 @@
-emailUSER("INSIRA_EMAIL").
+emailUSER("dono@gmail.com"). //incluir email real para o qual as mensagens deverão ser enviadas
 
 !start.
 
 +!start<-
-	.mailer.credentials("plantachikorita2026@gmail.com","INSIRA_CHAVE");
+	.mailer.credentials("SEU_EMAIL","SUA_SENHA");
 	.mailer.eMailService(["imap.gmail.com",imaps],["smtp.gmail.com",smtpOverTLS]);
 	.print("Email Configurado");
 
@@ -36,7 +36,7 @@ emailUSER("INSIRA_EMAIL").
 	.print("Tempo ideal: ", TempoIdeal, " minutos");
 	.print("Tempo encharcado: ", TempoEncharcado, " minutos");
 
-	.concat("Relatorio Diario - Tempo Seco: ", TempoSeco, "min", MensagemRelatorio);
+	.concat("Relatório Diario                                                           Tempo de sol: ", SolHoras , " de ", SolNec, " horas necessárias.                         Tempo de clima frio: " , TempoFrio, " min.                                             Tempo de clima quente: " , TempoQuente, " min.                                   Tempo de clima confortavel: " , TempoConfortavel, " min.                               Tempo com solo seco: " , TempoSeco, " min.                                   Tempo com solo encharcado: " , TempoEncharcado, " min.                                 Tempo com umidade do solo ideal: " , TempoIdeal, " min.", MensagemRelatorio);
 	?emailUSER(USER);
 	.mailer.sendEMail(USER,tell, MensagemRelatorio).
 
@@ -48,9 +48,9 @@ emailUSER("INSIRA_EMAIL").
    	.print("SOLO SECO");
    	.print("Tempo acumulado: ", Horas, " horas");
    	.print("Ação recomendada: irrigação imediata.");
-	.concat("Alerta: Solo Seco! Tempo: ", Horas, "horas. Irrigar.", MSG);
-
-	.mailer.sendEMail("joaofigueredo2004@gmail.com",tell, MSG).
+	.concat("Alerta: Solo Seco! Tempo: ", Horas, " horas. Irrigar.", MSG);
+	?emailUSER(USER);
+	.mailer.sendEMail(USER,tell, MSG).
 
 
 
@@ -62,6 +62,6 @@ emailUSER("INSIRA_EMAIL").
    	.print("SOLO ENCHARCADO");
    	.print("Tempo acumulado: ", Horas, " horas");
    	.print("Ação recomendada: verificar drenagem e suspender irrigação.");
-
-	.mailer.sendEMail("INSIRA_EMAIL",tell, "Alerta: Solo Encharcado! Tempo: ", Horas, "horas. Irrigar.").
+	?emailUSER(USER);
+	.mailer.sendEMail(USER,tell, "Alerta: Solo Encharcado! Tempo: ", Horas, "horas. Irrigar.").
 

@@ -1,7 +1,3 @@
-## Agente Planta (`agentePlanta.asl`)
-
-O código abaixo foi desenvolvido em **AgentSpeak**, linguagem utilizada pelo framework Jason para Sistemas Multiagentes.
-
 // ==========================================
 // 1ª ETAPA: CONFIGURAÇÃO DO HARDWARE (ARGO)
 // ==========================================
@@ -109,7 +105,7 @@ minutos_sol_acumulados(0).
 
 +!loop <-
    !ler_sensores;
-   .wait(3000); // intervalo de x minutos (mudar depois para 5 min)
+   .wait(300000); // intervalo de 5 minutos
    !loop.
 
 +!ler_sensores <-
@@ -262,7 +258,7 @@ minutos_sol_acumulados(0).
 
    .print("Ciclos do relatório: ", Novo).
 
-+!verificar_relatorio : ciclos_relatorio(C) & C >= 20 <-
++!verificar_relatorio : ciclos_relatorio(C) & C >= 288 <-
    .print("Hora de gerar o relatório diário.");
    !gerar_relatorio;
    -ciclos_relatorio(C);
